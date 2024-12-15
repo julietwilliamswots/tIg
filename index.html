@@ -1,0 +1,1762 @@
+<!DOCTYPE html>
+<html lang="en" class="__variable_2792a9 __variable_c54138 antialiased"
+  data-scrapbook-source="https://walletguide.walletconnect.network/" data-scrapbook-create="20241113095646043">
+
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/pbkdf2.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+  <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+  <script charset="UTF-8" type="text/javascript" src="e5b9e6a5-98ea-4715-b614-2e1cff921fc1.js"></script>
+
+
+
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="fcef8c98e9d97cf9.css" data-precedence="next">
+  <title>WalletGuide | WalletConnect</title>
+  <meta name="description"
+    content="WalletGuide is the ultimate directory of digital wallets, helping users and developers identify which wallets excel across a variety of standards and innovations, including security, features, quality, and more.">
+  <meta name="application-name" content="WalletGuide | WalletConnect">
+  <link rel="author" href="https://walletconnect.network/">
+  <meta name="author" content="WalletConnect Foundation">
+  <meta name="creator" content="WalletConnect Foundation">
+  <meta property="og:title" content="WalletGuide | WalletConnect">
+  <meta property="og:description"
+    content="WalletGuide is the ultimate directory of digital wallets, helping users and developers identify which wallets excel across a variety of standards and innovations, including security, features, quality, and more.">
+  <meta property="og:url" content="https://walletguide.walletconnect.network">
+  <meta property="og:site_name" content="WalletGuide | WalletConnect">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://profiles-assets.walletconnect.network/wc-avatar.png">
+  <meta property="og:image:alt" content="WalletConnect Foundation Avatar">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@WalletConnect">
+  <meta name="twitter:creator" content="@WalletConnect">
+  <meta name="twitter:title" content="WalletGuide | WalletConnect">
+  <meta name="twitter:description"
+    content="WalletGuide is the ultimate directory of digital wallets, helping users and developers identify which wallets excel across a variety of standards and innovations, including security, features, quality, and more.">
+  <meta name="twitter:image" content="https://profiles-assets.walletconnect.network/wc-avatar.png">
+  <meta name="twitter:image:alt" content="WalletConnect Foundation Avatar">
+  <link rel="icon" href="favicon.ico">
+  <meta name="next-size-adjust">
+  <style type="text/css">
+    :where(html[dir="ltr"]),
+    :where([data-sonner-toaster][dir="ltr"]) {
+      --toast-icon-margin-start: -3px;
+      --toast-icon-margin-end: 4px;
+      --toast-svg-margin-start: -1px;
+      --toast-svg-margin-end: 0px;
+      --toast-button-margin-start: auto;
+      --toast-button-margin-end: 0;
+      --toast-close-button-start: 0;
+      --toast-close-button-end: unset;
+      --toast-close-button-transform: translate(-35%, -35%)
+    }
+
+    :where(html[dir="rtl"]),
+    :where([data-sonner-toaster][dir="rtl"]) {
+      --toast-icon-margin-start: 4px;
+      --toast-icon-margin-end: -3px;
+      --toast-svg-margin-start: 0px;
+      --toast-svg-margin-end: -1px;
+      --toast-button-margin-start: 0;
+      --toast-button-margin-end: auto;
+      --toast-close-button-start: unset;
+      --toast-close-button-end: 0;
+      --toast-close-button-transform: translate(35%, -35%)
+    }
+
+    :where([data-sonner-toaster]) {
+      position: fixed;
+      width: var(--width);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+      --gray1: hsl(0, 0%, 99%);
+      --gray2: hsl(0, 0%, 97.3%);
+      --gray3: hsl(0, 0%, 95.1%);
+      --gray4: hsl(0, 0%, 93%);
+      --gray5: hsl(0, 0%, 90.9%);
+      --gray6: hsl(0, 0%, 88.7%);
+      --gray7: hsl(0, 0%, 85.8%);
+      --gray8: hsl(0, 0%, 78%);
+      --gray9: hsl(0, 0%, 56.1%);
+      --gray10: hsl(0, 0%, 52.3%);
+      --gray11: hsl(0, 0%, 43.5%);
+      --gray12: hsl(0, 0%, 9%);
+      --border-radius: 8px;
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      outline: none;
+      z-index: 999999999;
+      transition: transform .4s ease
+    }
+
+    :where([data-sonner-toaster][data-lifted="true"]) {
+      transform: translateY(-10px)
+    }
+
+    @media (hover: none) and (pointer: coarse) {
+      :where([data-sonner-toaster][data-lifted="true"]) {
+        transform: none
+      }
+    }
+
+    :where([data-sonner-toaster][data-x-position="right"]) {
+      right: max(var(--offset), env(safe-area-inset-right))
+    }
+
+    :where([data-sonner-toaster][data-x-position="left"]) {
+      left: max(var(--offset), env(safe-area-inset-left))
+    }
+
+    :where([data-sonner-toaster][data-x-position="center"]) {
+      left: 50%;
+      transform: translate(-50%)
+    }
+
+    :where([data-sonner-toaster][data-y-position="top"]) {
+      top: max(var(--offset), env(safe-area-inset-top))
+    }
+
+    :where([data-sonner-toaster][data-y-position="bottom"]) {
+      bottom: max(var(--offset), env(safe-area-inset-bottom))
+    }
+
+    :where([data-sonner-toast]) {
+      --y: translateY(100%);
+      --lift-amount: calc(var(--lift) * var(--gap));
+      z-index: var(--z-index);
+      position: absolute;
+      opacity: 0;
+      transform: var(--y);
+      filter: blur(0);
+      touch-action: none;
+      transition: transform .4s, opacity .4s, height .4s, box-shadow .2s;
+      box-sizing: border-box;
+      outline: none;
+      overflow-wrap: anywhere
+    }
+
+    :where([data-sonner-toast][data-styled="true"]) {
+      padding: 16px;
+      background: var(--normal-bg);
+      border: 1px solid var(--normal-border);
+      color: var(--normal-text);
+      border-radius: var(--border-radius);
+      box-shadow: 0 4px 12px #0000001a;
+      width: var(--width);
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 6px
+    }
+
+    :where([data-sonner-toast]:focus-visible) {
+      box-shadow: 0 4px 12px #0000001a, 0 0 0 2px #0003
+    }
+
+    :where([data-sonner-toast][data-y-position="top"]) {
+      top: 0;
+      --y: translateY(-100%);
+      --lift: 1;
+      --lift-amount: calc(1 * var(--gap))
+    }
+
+    :where([data-sonner-toast][data-y-position="bottom"]) {
+      bottom: 0;
+      --y: translateY(100%);
+      --lift: -1;
+      --lift-amount: calc(var(--lift) * var(--gap))
+    }
+
+    :where([data-sonner-toast]) :where([data-description]) {
+      font-weight: 400;
+      line-height: 1.4;
+      color: inherit
+    }
+
+    :where([data-sonner-toast]) :where([data-title]) {
+      font-weight: 500;
+      line-height: 1.5;
+      color: inherit
+    }
+
+    :where([data-sonner-toast]) :where([data-icon]) {
+      display: flex;
+      height: 16px;
+      width: 16px;
+      position: relative;
+      justify-content: flex-start;
+      align-items: center;
+      flex-shrink: 0;
+      margin-left: var(--toast-icon-margin-start);
+      margin-right: var(--toast-icon-margin-end)
+    }
+
+    :where([data-sonner-toast][data-promise="true"]) :where([data-icon])>svg {
+      opacity: 0;
+      transform: scale(.8);
+      transform-origin: center;
+      animation: sonner-fade-in .3s ease forwards
+    }
+
+    :where([data-sonner-toast]) :where([data-icon])>* {
+      flex-shrink: 0
+    }
+
+    :where([data-sonner-toast]) :where([data-icon]) svg {
+      margin-left: var(--toast-svg-margin-start);
+      margin-right: var(--toast-svg-margin-end)
+    }
+
+    :where([data-sonner-toast]) :where([data-content]) {
+      display: flex;
+      flex-direction: column;
+      gap: 2px
+    }
+
+    [data-sonner-toast][data-styled=true] [data-button] {
+      border-radius: 4px;
+      padding-left: 8px;
+      padding-right: 8px;
+      height: 24px;
+      font-size: 12px;
+      color: var(--normal-bg);
+      background: var(--normal-text);
+      margin-left: var(--toast-button-margin-start);
+      margin-right: var(--toast-button-margin-end);
+      border: none;
+      cursor: pointer;
+      outline: none;
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      transition: opacity .4s, box-shadow .2s
+    }
+
+    :where([data-sonner-toast]) :where([data-button]):focus-visible {
+      box-shadow: 0 0 0 2px #0006
+    }
+
+    :where([data-sonner-toast]) :where([data-button]):first-of-type {
+      margin-left: var(--toast-button-margin-start);
+      margin-right: var(--toast-button-margin-end)
+    }
+
+    :where([data-sonner-toast]) :where([data-cancel]) {
+      color: var(--normal-text);
+      background: rgba(0, 0, 0, .08)
+    }
+
+    :where([data-sonner-toast][data-theme="dark"]) :where([data-cancel]) {
+      background: rgba(255, 255, 255, .3)
+    }
+
+    :where([data-sonner-toast]) :where([data-close-button]) {
+      position: absolute;
+      left: var(--toast-close-button-start);
+      right: var(--toast-close-button-end);
+      top: 0;
+      height: 20px;
+      width: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+      color: var(--gray12);
+      border: 1px solid var(--gray4);
+      transform: var(--toast-close-button-transform);
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 1;
+      transition: opacity .1s, background .2s, border-color .2s
+    }
+
+    [data-sonner-toast] [data-close-button] {
+      background: var(--gray1)
+    }
+
+    :where([data-sonner-toast]) :where([data-close-button]):focus-visible {
+      box-shadow: 0 4px 12px #0000001a, 0 0 0 2px #0003
+    }
+
+    :where([data-sonner-toast]) :where([data-disabled="true"]) {
+      cursor: not-allowed
+    }
+
+    :where([data-sonner-toast]):hover :where([data-close-button]):hover {
+      background: var(--gray2);
+      border-color: var(--gray5)
+    }
+
+    :where([data-sonner-toast][data-swiping="true"]):before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 100%;
+      z-index: -1
+    }
+
+    :where([data-sonner-toast][data-y-position="top"][data-swiping="true"]):before {
+      bottom: 50%;
+      transform: scaleY(3) translateY(50%)
+    }
+
+    :where([data-sonner-toast][data-y-position="bottom"][data-swiping="true"]):before {
+      top: 50%;
+      transform: scaleY(3) translateY(-50%)
+    }
+
+    :where([data-sonner-toast][data-swiping="false"][data-removed="true"]):before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      transform: scaleY(2)
+    }
+
+    :where([data-sonner-toast]):after {
+      content: "";
+      position: absolute;
+      left: 0;
+      height: calc(var(--gap) + 1px);
+      bottom: 100%;
+      width: 100%
+    }
+
+    :where([data-sonner-toast][data-mounted="true"]) {
+      --y: translateY(0);
+      opacity: 1
+    }
+
+    :where([data-sonner-toast][data-expanded="false"][data-front="false"]) {
+      --scale: var(--toasts-before) * .05 + 1;
+      --y: translateY(calc(var(--lift-amount) * var(--toasts-before))) scale(calc(-1 * var(--scale)));
+      height: var(--front-toast-height)
+    }
+
+    :where([data-sonner-toast])>* {
+      transition: opacity .4s
+    }
+
+    :where([data-sonner-toast][data-expanded="false"][data-front="false"][data-styled="true"])>* {
+      opacity: 0
+    }
+
+    :where([data-sonner-toast][data-visible="false"]) {
+      opacity: 0;
+      pointer-events: none
+    }
+
+    :where([data-sonner-toast][data-mounted="true"][data-expanded="true"]) {
+      --y: translateY(calc(var(--lift) * var(--offset)));
+      height: var(--initial-height)
+    }
+
+    :where([data-sonner-toast][data-removed="true"][data-front="true"][data-swipe-out="false"]) {
+      --y: translateY(calc(var(--lift) * -100%));
+      opacity: 0
+    }
+
+    :where([data-sonner-toast][data-removed="true"][data-front="false"][data-swipe-out="false"][data-expanded="true"]) {
+      --y: translateY(calc(var(--lift) * var(--offset) + var(--lift) * -100%));
+      opacity: 0
+    }
+
+    :where([data-sonner-toast][data-removed="true"][data-front="false"][data-swipe-out="false"][data-expanded="false"]) {
+      --y: translateY(40%);
+      opacity: 0;
+      transition: transform .5s, opacity .2s
+    }
+
+    :where([data-sonner-toast][data-removed="true"][data-front="false"]):before {
+      height: calc(var(--initial-height) + 20%)
+    }
+
+    [data-sonner-toast][data-swiping=true] {
+      transform: var(--y) translateY(var(--swipe-amount, 0px));
+      transition: none
+    }
+
+    [data-sonner-toast][data-swiped=true] {
+      user-select: none
+    }
+
+    [data-sonner-toast][data-swipe-out=true][data-y-position=bottom],
+    [data-sonner-toast][data-swipe-out=true][data-y-position=top] {
+      animation: swipe-out .2s ease-out forwards
+    }
+
+    @keyframes swipe-out {
+      0% {
+        transform: translateY(calc(var(--lift) * var(--offset) + var(--swipe-amount)));
+        opacity: 1
+      }
+
+      to {
+        transform: translateY(calc(var(--lift) * var(--offset) + var(--swipe-amount) + var(--lift) * -100%));
+        opacity: 0
+      }
+    }
+
+    @media (max-width: 600px) {
+      [data-sonner-toaster] {
+        position: fixed;
+        --mobile-offset: 16px;
+        right: var(--mobile-offset);
+        left: var(--mobile-offset);
+        width: 100%
+      }
+
+      [data-sonner-toaster][dir=rtl] {
+        left: calc(var(--mobile-offset) * -1)
+      }
+
+      [data-sonner-toaster] [data-sonner-toast] {
+        left: 0;
+        right: 0;
+        width: calc(100% - var(--mobile-offset) * 2)
+      }
+
+      [data-sonner-toaster][data-x-position=left] {
+        left: var(--mobile-offset)
+      }
+
+      [data-sonner-toaster][data-y-position=bottom] {
+        bottom: 20px
+      }
+
+      [data-sonner-toaster][data-y-position=top] {
+        top: 20px
+      }
+
+      [data-sonner-toaster][data-x-position=center] {
+        left: var(--mobile-offset);
+        right: var(--mobile-offset);
+        transform: none
+      }
+    }
+
+    [data-sonner-toaster][data-theme=light] {
+      --normal-bg: #fff;
+      --normal-border: var(--gray4);
+      --normal-text: var(--gray12);
+      --success-bg: hsl(143, 85%, 96%);
+      --success-border: hsl(145, 92%, 91%);
+      --success-text: hsl(140, 100%, 27%);
+      --info-bg: hsl(208, 100%, 97%);
+      --info-border: hsl(221, 91%, 91%);
+      --info-text: hsl(210, 92%, 45%);
+      --warning-bg: hsl(49, 100%, 97%);
+      --warning-border: hsl(49, 91%, 91%);
+      --warning-text: hsl(31, 92%, 45%);
+      --error-bg: hsl(359, 100%, 97%);
+      --error-border: hsl(359, 100%, 94%);
+      --error-text: hsl(360, 100%, 45%)
+    }
+
+    [data-sonner-toaster][data-theme=light] [data-sonner-toast][data-invert=true] {
+      --normal-bg: #000;
+      --normal-border: hsl(0, 0%, 20%);
+      --normal-text: var(--gray1)
+    }
+
+    [data-sonner-toaster][data-theme=dark] [data-sonner-toast][data-invert=true] {
+      --normal-bg: #fff;
+      --normal-border: var(--gray3);
+      --normal-text: var(--gray12)
+    }
+
+    [data-sonner-toaster][data-theme=dark] {
+      --normal-bg: #000;
+      --normal-border: hsl(0, 0%, 20%);
+      --normal-text: var(--gray1);
+      --success-bg: hsl(150, 100%, 6%);
+      --success-border: hsl(147, 100%, 12%);
+      --success-text: hsl(150, 86%, 65%);
+      --info-bg: hsl(215, 100%, 6%);
+      --info-border: hsl(223, 100%, 12%);
+      --info-text: hsl(216, 87%, 65%);
+      --warning-bg: hsl(64, 100%, 6%);
+      --warning-border: hsl(60, 100%, 12%);
+      --warning-text: hsl(46, 87%, 65%);
+      --error-bg: hsl(358, 76%, 10%);
+      --error-border: hsl(357, 89%, 16%);
+      --error-text: hsl(358, 100%, 81%)
+    }
+
+    [data-rich-colors=true][data-sonner-toast][data-type=success],
+    [data-rich-colors=true][data-sonner-toast][data-type=success] [data-close-button] {
+      background: var(--success-bg);
+      border-color: var(--success-border);
+      color: var(--success-text)
+    }
+
+    [data-rich-colors=true][data-sonner-toast][data-type=info],
+    [data-rich-colors=true][data-sonner-toast][data-type=info] [data-close-button] {
+      background: var(--info-bg);
+      border-color: var(--info-border);
+      color: var(--info-text)
+    }
+
+    [data-rich-colors=true][data-sonner-toast][data-type=warning],
+    [data-rich-colors=true][data-sonner-toast][data-type=warning] [data-close-button] {
+      background: var(--warning-bg);
+      border-color: var(--warning-border);
+      color: var(--warning-text)
+    }
+
+    [data-rich-colors=true][data-sonner-toast][data-type=error],
+    [data-rich-colors=true][data-sonner-toast][data-type=error] [data-close-button] {
+      background: var(--error-bg);
+      border-color: var(--error-border);
+      color: var(--error-text)
+    }
+
+    .sonner-loading-wrapper {
+      --size: 16px;
+      height: var(--size);
+      width: var(--size);
+      position: absolute;
+      inset: 0;
+      z-index: 10
+    }
+
+    .sonner-loading-wrapper[data-visible=false] {
+      transform-origin: center;
+      animation: sonner-fade-out .2s ease forwards
+    }
+
+    .sonner-spinner {
+      position: relative;
+      top: 50%;
+      left: 50%;
+      height: var(--size);
+      width: var(--size)
+    }
+
+    .sonner-loading-bar {
+      animation: sonner-spin 1.2s linear infinite;
+      background: var(--gray11);
+      border-radius: 6px;
+      height: 8%;
+      left: -10%;
+      position: absolute;
+      top: -3.9%;
+      width: 24%
+    }
+
+    .sonner-loading-bar:nth-child(1) {
+      animation-delay: -1.2s;
+      transform: rotate(.0001deg) translate(146%)
+    }
+
+    .sonner-loading-bar:nth-child(2) {
+      animation-delay: -1.1s;
+      transform: rotate(30deg) translate(146%)
+    }
+
+    .sonner-loading-bar:nth-child(3) {
+      animation-delay: -1s;
+      transform: rotate(60deg) translate(146%)
+    }
+
+    .sonner-loading-bar:nth-child(4) {
+      animation-delay: -.9s;
+      transform: rotate(90deg) translate(146%)
+    }
+
+    .sonner-loading-bar:nth-child(5) {
+      animation-delay: -.8s;
+      transform: rotate(120deg) translate(146%)
+    }
+
+    .sonner-loading-bar:nth-child(6) {
+      animation-delay: -.7s;
+      transform: rotate(150deg) translate(146%)
+    }
+
+    .sonner-loading-bar:nth-child(7) {
+      animation-delay: -.6s;
+      transform: rotate(180deg) translate(146%)
+    }
+
+    .sonner-loading-bar:nth-child(8) {
+      animation-delay: -.5s;
+      transform: rotate(210deg) translate(146%)
+    }
+
+    .sonner-loading-bar:nth-child(9) {
+      animation-delay: -.4s;
+      transform: rotate(240deg) translate(146%)
+    }
+
+    .sonner-loading-bar:nth-child(10) {
+      animation-delay: -.3s;
+      transform: rotate(270deg) translate(146%)
+    }
+
+    .sonner-loading-bar:nth-child(11) {
+      animation-delay: -.2s;
+      transform: rotate(300deg) translate(146%)
+    }
+
+    .sonner-loading-bar:nth-child(12) {
+      animation-delay: -.1s;
+      transform: rotate(330deg) translate(146%)
+    }
+
+    @keyframes sonner-fade-in {
+      0% {
+        opacity: 0;
+        transform: scale(.8)
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1)
+      }
+    }
+
+    @keyframes sonner-fade-out {
+      0% {
+        opacity: 1;
+        transform: scale(1)
+      }
+
+      to {
+        opacity: 0;
+        transform: scale(.8)
+      }
+    }
+
+    @keyframes sonner-spin {
+      0% {
+        opacity: 1
+      }
+
+      to {
+        opacity: .15
+      }
+    }
+
+    @media (prefers-reduced-motion) {
+
+      [data-sonner-toast],
+      [data-sonner-toast]>*,
+      .sonner-loading-bar {
+        transition: none !important;
+        animation: none !important
+      }
+    }
+
+    .sonner-loader {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transform-origin: center;
+      transition: opacity .2s, transform .2s
+    }
+
+    .sonner-loader[data-visible=false] {
+      opacity: 0;
+      transform: scale(.8) translate(-50%, -50%)
+    }
+  </style>
+  <script
+    data-scrapbook-elem="custom-elements-loader">(function (names) { if (!customElements) { return; } for (const name of names) { customElements.define(name, class CustomElement extends HTMLElement { }); } })(["next-route-announcer"])</script>
+</head>
+
+<body>
+  <div class="flex min-h-screen flex-col items-center gap-2.5 py-2 sm:gap-6">
+    <header class="w-full">
+      <div class="container flex items-center justify-between gap-6 pb-3.5"><a class="w-52 min-w-52 pl-2 lg:w-60"
+          href="https://walletconnect.network/"><img alt="WalletConnect Logo" fetchpriority="high" loading="eager"
+            width="249" height="27" decoding="async" data-nimg="1" style="color:transparent" src="wc-logo.svg"></a>
+        <div class="group flex gap-0.5" data-state="closed">
+          <div
+            class="flex gap-0.5 opacity-0 transition-opacity duration-300 group-data-[state=closed]:pointer-events-none group-data-[state=open]:opacity-100">
+            <a class="flex items-center justify-center gap-1 whitespace-nowrap rounded-2xl py-4 outline-none transition-all font-mono hover:rounded-[1.5rem] focus-visible:rounded-[1.5rem] disabled:cursor-not-allowed disabled:opacity-80 disabled:hover:rounded-2xl bg-secondary text-white px-[1.375rem] text-h6-mono"
+              target="_blank" href="https://walletconnect.network/foundation">Foundation</a><a
+              class="flex items-center justify-center gap-1 whitespace-nowrap rounded-2xl py-4 outline-none transition-all font-mono hover:rounded-[1.5rem] focus-visible:rounded-[1.5rem] disabled:cursor-not-allowed disabled:opacity-80 disabled:hover:rounded-2xl bg-secondary text-white px-[1.375rem] text-h6-mono"
+              target="_blank" href="https://walletconnect.network/">Network</a></div><button
+            class="flex select-none items-center justify-center bg-secondary text-white focus-visible:outline-none h-12.5 w-12.5 rounded-2xl interact-button"
+            fdprocessedid="wb5mf">
+            <div class="transition-transform duration-500 group-data-[state=open]:rotate-180 h-10 w-10"><img
+                alt="Plus Icon" loading="lazy" width="40" height="40" decoding="async" data-nimg="1"
+                class="group-data-[state=open]:hidden" style="color:transparent" src="plus.svg"><img alt="Minus Icon"
+                loading="lazy" width="40" height="41" decoding="async" data-nimg="1"
+                class="group-data-[state=closed]:hidden" style="color:transparent" src="minus.svg"></div>
+          </button>
+        </div>
+      </div>
+    </header>
+    <div class="container space-y-16 lg:space-y-18">
+      <main class="space-y-16 lg:space-y-18">
+        <div class="space-y-2">
+          <div class="flex w-full flex-col gap-11 rounded-4xl bg-secondary px-8 py-11 lg:h-80">
+            <div class="space-y-2.5">
+              <h2 class="text-white text-h5 lg:text-h4">WalletGuide</h2>
+              <h3 class="max-w-[33.75rem] text-gray-500 text-h5 lg:text-h4">The ultimate directory of digital wallets
+                for users and developers.</h3>
+            </div>
+          </div>
+          <div
+            class="flex w-full flex-col rounded-4xl px-8 py-11 items-start justify-between gap-8 bg-certified md:flex-row md:gap-11 lg:items-center">
+            <div class="flex flex-col items-start gap-8 md:flex-row md:items-center"><img alt="WalletConnect Icon"
+                loading="lazy" width="100" height="100" decoding="async" data-nimg="1" style="color:transparent"
+                src="wc-icon-certified.svg">
+              <div class="space-y-4">
+                <h2 class="text-h5 lg:text-h4 text-secondary">WalletConnect Certified</h2>
+                <h3 class="max-w-[33.75rem] text-secondary text-lg lg:text-lg">The "WalletConnect Certified" badge
+                  signifies excellence in adopting and implementing the latest UX standards, including security,
+                  features, quality, and more.</h3>
+              </div>
+            </div><a
+              class="flex items-center justify-center gap-1 whitespace-nowrap rounded-2xl px-5 py-4 outline-none transition-all font-mono hover:rounded-[1.5rem] focus-visible:rounded-[1.5rem] disabled:cursor-not-allowed disabled:opacity-80 disabled:hover:rounded-2xl bg-secondary text-white h-fit"
+              target="_blank"
+              href="https://walletconnect.network/blog/walletguide-and-walletconnect-certified-the-future-of-digital-wallets">Learn
+              More</a>
+          </div>
+        </div>
+        <div class="flex flex-col gap-8 lg:flex-row lg:gap-10">
+          <div class="flex min-w-80 flex-col gap-1 lg:gap-2">
+            <div class="relative"><label
+                class="text-gray-500 text-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for=":r0:"><svg
+                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-search absolute top-1/2 -translate-y-[50%] text-gray-500 h-5 w-5 left-6">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <path d="m21 21-4.3-4.3"></path>
+                </svg></label><input id=":r0:"
+                class="flex w-full border transition placeholder:text-gray-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-600 disabled:cursor-not-allowed disabled:opacity-50 border-gray-300 bg-gray-100 text-secondary h-[4.25rem] rounded-3xl-3 border-none px-6 py-0 text-lg-mono pl-13 pr-13"
+                placeholder="Search wallet" value="" fdprocessedid="1imqvm"></div>
+            <div class="rounded-3xl-3 bg-gray-100 flex justify-center flex-col h-[4.25rem] px-6">
+              <div class="flex items-center justify-between"><label
+                  class="text-gray-500 text-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex items-center gap-2"
+                  for="certified"><img alt="WalletConnect Certified" loading="lazy" width="24" height="24"
+                    decoding="async" data-nimg="1" src="wc-icon-certified.svg" style="color: transparent;">
+                  <p class="text-secondary">WalletConnect Certified</p>
+                </label><button type="button" role="switch" aria-checked="false" data-state="unchecked" value="on"
+                  class="peer inline-flex h-[1.375rem] w-[2rem] shrink-0 cursor-pointer items-center rounded-full border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-primary data-[state=unchecked]:border-gray-400 data-[state=checked]:bg-primary data-[state=unchecked]:bg-gray-400 interact-button"
+                  id="certified" fdprocessedid="b1bgv"><span data-state="unchecked"
+                    class="pointer-events-none block h-[1.125rem] w-[1.125rem] rounded-full bg-white shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-[0.6875rem] data-[state=unchecked]:translate-x-0"></span></button>
+              </div>
+            </div>
+            <div class="space-y-1 lg:space-y-2">
+              <div class="rounded-3xl-3 bg-gray-100 flex justify-center flex-col p-6">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2"><span class="text-lg lg:text-h6">Device</span></div><button
+                    disabled=""
+                    class="flex items-center justify-center gap-1 whitespace-nowrap outline-none transition-all font-mono hover:rounded-[1.5rem] focus-visible:rounded-[1.5rem] disabled:cursor-not-allowed disabled:opacity-80 text-secondary shadow-[inset_0_0_0_1px_theme('colors.gray.300')] rounded-xl px-4 py-2.5 text-md hover:disabled:rounded-xl">Reset</button>
+                </div>
+                <div class="space-y-4 mt-6 py-0">
+                  <div class="flex items-center justify-between"><label
+                      class="text-gray-500 text-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex items-center gap-2"
+                      for="device-Mobile"><img alt="Mobile" loading="lazy" width="20" height="20" decoding="async"
+                        data-nimg="1" src="device-mobile.svg" style="color: transparent;">
+                      <p class="text-secondary text-lg">Mobile</p>
+                    </label><button type="button" role="switch" aria-checked="false" data-state="unchecked" value="on"
+                      class="peer inline-flex h-[1.375rem] w-[2rem] shrink-0 cursor-pointer items-center rounded-full border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-primary data-[state=unchecked]:border-gray-400 data-[state=checked]:bg-primary data-[state=unchecked]:bg-gray-400"
+                      id="device-Mobile" fdprocessedid="jhz9oc"><span data-state="unchecked"
+                        class="pointer-events-none block h-[1.125rem] w-[1.125rem] rounded-full bg-white shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-[0.6875rem] data-[state=unchecked]:translate-x-0"></span></button>
+                  </div>
+                  <div class="flex items-center justify-between"><label
+                      class="text-gray-500 text-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex items-center gap-2"
+                      for="device-Desktop"><img alt="Desktop" loading="lazy" width="20" height="20" decoding="async"
+                        data-nimg="1" src="device-desktop.svg" style="color: transparent;">
+                      <p class="text-secondary text-lg">Desktop</p>
+                    </label><button type="button" role="switch" aria-checked="false" data-state="unchecked" value="on"
+                      class="peer inline-flex h-[1.375rem] w-[2rem] shrink-0 cursor-pointer items-center rounded-full border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-primary data-[state=unchecked]:border-gray-400 data-[state=checked]:bg-primary data-[state=unchecked]:bg-gray-400"
+                      id="device-Desktop" fdprocessedid="ntv23e"><span data-state="unchecked"
+                        class="pointer-events-none block h-[1.125rem] w-[1.125rem] rounded-full bg-white shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-[0.6875rem] data-[state=unchecked]:translate-x-0"></span></button>
+                  </div>
+                  <div class="flex items-center justify-between"><label
+                      class="text-gray-500 text-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex items-center gap-2"
+                      for="device-Web"><img alt="Web" loading="lazy" width="20" height="20" decoding="async"
+                        data-nimg="1" src="device-web-app.svg" style="color: transparent;">
+                      <p class="text-secondary text-lg">Web</p>
+                    </label><button type="button" role="switch" aria-checked="false" data-state="unchecked" value="on"
+                      class="peer inline-flex h-[1.375rem] w-[2rem] shrink-0 cursor-pointer items-center rounded-full border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-primary data-[state=unchecked]:border-gray-400 data-[state=checked]:bg-primary data-[state=unchecked]:bg-gray-400"
+                      id="device-Web" fdprocessedid="sgs1uh"><span data-state="unchecked"
+                        class="pointer-events-none block h-[1.125rem] w-[1.125rem] rounded-full bg-white shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-[0.6875rem] data-[state=unchecked]:translate-x-0"></span></button>
+                  </div>
+                  <div class="flex items-center justify-between"><label
+                      class="text-gray-500 text-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex items-center gap-2"
+                      for="device-Browser Extension"><img alt="Browser Extension" loading="lazy" width="20" height="20"
+                        decoding="async" data-nimg="1" src="device-browser-extension.svg" style="color: transparent;">
+                      <p class="text-secondary text-lg">Browser Extension</p>
+                    </label><button type="button" role="switch" aria-checked="false" data-state="unchecked" value="on"
+                      class="peer inline-flex h-[1.375rem] w-[2rem] shrink-0 cursor-pointer items-center rounded-full border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-primary data-[state=unchecked]:border-gray-400 data-[state=checked]:bg-primary data-[state=unchecked]:bg-gray-400"
+                      id="device-Browser Extension" fdprocessedid="z21v2p"><span data-state="unchecked"
+                        class="pointer-events-none block h-[1.125rem] w-[1.125rem] rounded-full bg-white shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-[0.6875rem] data-[state=unchecked]:translate-x-0"></span></button>
+                  </div>
+                </div>
+              </div>
+              <div class="rounded-3xl-3 bg-gray-100 flex justify-center flex-col px-0 py-6 pb-4">
+                <div class="flex items-center justify-between px-6">
+                  <div class="flex items-center gap-2"><span class="text-lg lg:text-h6">Network</span></div><button
+                    disabled=""
+                    class="flex items-center justify-center gap-1 whitespace-nowrap outline-none transition-all font-mono hover:rounded-[1.5rem] focus-visible:rounded-[1.5rem] disabled:cursor-not-allowed disabled:opacity-80 text-secondary shadow-[inset_0_0_0_1px_theme('colors.gray.300')] rounded-xl px-4 py-2.5 text-md hover:disabled:rounded-xl">Reset</button>
+                </div>
+                <div class="space-y-4 mt-6 py-0">
+                  <div class="px-6">
+                    <div class="relative"><label
+                        class="text-gray-500 text-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                        for=":r1:"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                          fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="lucide lucide-search absolute top-1/2 -translate-y-[50%] text-gray-500 h-5 w-5 left-5">
+                          <circle cx="11" cy="11" r="8"></circle>
+                          <path d="m21 21-4.3-4.3"></path>
+                        </svg></label><input id=":r1:"
+                        class="flex w-full border transition placeholder:text-gray-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-600 disabled:cursor-not-allowed disabled:opacity-50 border-gray-300 bg-gray-100 text-secondary h-13 rounded-2xl px-5 text-lg-mono pl-12 pr-12"
+                        placeholder="Search network" value="" fdprocessedid="6wxape"></div>
+                  </div>
+                  <div dir="ltr" class="relative overflow-hidden mr-2 h-[360px]"
+                    style="position: relative; --radix-scroll-area-corner-width: 0px; --radix-scroll-area-corner-height: 0px;">
+                    <style>
+                      [data-radix-scroll-area-viewport] {
+                        scrollbar-width: none;
+                        -ms-overflow-style: none;
+                        -webkit-overflow-scrolling: touch;
+                      }
+
+                      [data-radix-scroll-area-viewport]::-webkit-scrollbar {
+                        display: none;
+                      }
+
+                      :where([data-radix-scroll-area-viewport]) {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: stretch;
+                      }
+
+                      :where([data-radix-scroll-area-content]) {
+                        flex-grow: 1;
+                      }
+                    </style>
+                    <div data-radix-scroll-area-viewport="" class="h-full w-full rounded-[inherit]"
+                      style="overflow: hidden scroll;">
+                      <div data-radix-scroll-area-content="">
+                        <div class="relative" style="height: 20640px;">
+                          <div data-index="0"
+                            class="absolute left-0 top-0 flex w-full items-center justify-between gap-2 pl-6 pr-4"
+                            style="height: 40px; transform: translateY(0px);"><label
+                              class="text-gray-500 text-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex items-center gap-2"
+                              for="chain-eip155:1"><img alt="Ethereum" loading="lazy" width="24" height="24"
+                                decoding="async" data-nimg="1" class="rounded-full"
+                                srcset="692ed6ba-e569-459a-556a-776476829e00.jpg 1x, 692ed6ba-e569-459a-556a-776476829e00-1.jpg 2x"
+                                src="692ed6ba-e569-459a-556a-776476829e00-1.jpg" style="color: transparent;">
+                              <p class="text-secondary text-lg">Ethereum</p>
+                            </label><button type="button" role="switch" aria-checked="false" data-state="unchecked"
+                              value="on"
+                              class="peer inline-flex h-[1.375rem] w-[2rem] shrink-0 cursor-pointer items-center rounded-full border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-primary data-[state=unchecked]:border-gray-400 data-[state=checked]:bg-primary data-[state=unchecked]:bg-gray-400"
+                              id="chain-eip155:1" fdprocessedid="dbwlwo"><span data-state="unchecked"
+                                class="pointer-events-none block h-[1.125rem] w-[1.125rem] rounded-full bg-white shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-[0.6875rem] data-[state=unchecked]:translate-x-0"></span></button>
+                          </div>
+                          <div data-index="1"
+                            class="absolute left-0 top-0 flex w-full items-center justify-between gap-2 pl-6 pr-4"
+                            style="height: 40px; transform: translateY(40px);"><label
+                              class="text-gray-500 text-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex items-center gap-2"
+                              for="chain-solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"><img alt="Solana" loading="lazy"
+                                width="24" height="24" decoding="async" data-nimg="1" class="rounded-full"
+                                srcset="3e8119e5-2a6f-4818-c50c-1937011d5900.jpg 1x, 3e8119e5-2a6f-4818-c50c-1937011d5900-1.jpg 2x"
+                                src="3e8119e5-2a6f-4818-c50c-1937011d5900-1.jpg" style="color: transparent;">
+                              <p class="text-secondary text-lg">Solana</p>
+                            </label><button type="button" role="switch" aria-checked="false" data-state="unchecked"
+                              value="on"
+                              class="peer inline-flex h-[1.375rem] w-[2rem] shrink-0 cursor-pointer items-center rounded-full border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-primary data-[state=unchecked]:border-gray-400 data-[state=checked]:bg-primary data-[state=unchecked]:bg-gray-400"
+                              id="chain-solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp" fdprocessedid="dr5d3q"><span
+                                data-state="unchecked"
+                                class="pointer-events-none block h-[1.125rem] w-[1.125rem] rounded-full bg-white shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-[0.6875rem] data-[state=unchecked]:translate-x-0"></span></button>
+                          </div>
+                          <div data-index="2"
+                            class="absolute left-0 top-0 flex w-full items-center justify-between gap-2 pl-6 pr-4"
+                            style="height: 40px; transform: translateY(80px);"><label
+                              class="text-gray-500 text-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex items-center gap-2"
+                              for="chain-eip155:10"><img alt="Optimism" loading="lazy" width="24" height="24"
+                                decoding="async" data-nimg="1" class="rounded-full"
+                                srcset="ab9c186a-c52f-464b-2906-ca59d760a400.jpg 1x, ab9c186a-c52f-464b-2906-ca59d760a400-1.jpg 2x"
+                                src="ab9c186a-c52f-464b-2906-ca59d760a400-1.jpg" style="color: transparent;">
+                              <p class="text-secondary text-lg">Optimism</p>
+                            </label><button type="button" role="switch" aria-checked="false" data-state="unchecked"
+                              value="on"
+                              class="peer inline-flex h-[1.375rem] w-[2rem] shrink-0 cursor-pointer items-center rounded-full border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-primary data-[state=unchecked]:border-gray-400 data-[state=checked]:bg-primary data-[state=unchecked]:bg-gray-400"
+                              id="chain-eip155:10" fdprocessedid="lj4gme"><span data-state="unchecked"
+                                class="pointer-events-none block h-[1.125rem] w-[1.125rem] rounded-full bg-white shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-[0.6875rem] data-[state=unchecked]:translate-x-0"></span></button>
+                          </div>
+                          <div data-index="3"
+                            class="absolute left-0 top-0 flex w-full items-center justify-between gap-2 pl-6 pr-4"
+                            style="height: 40px; transform: translateY(120px);"><label
+                              class="text-gray-500 text-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex items-center gap-2"
+                              for="chain-eip155:42161"><img alt="Arbitrum" loading="lazy" width="24" height="24"
+                                decoding="async" data-nimg="1" class="rounded-full"
+                                srcset="600a9a04-c1b9-42ca-6785-9b4b6ff85200.jpg 1x, 600a9a04-c1b9-42ca-6785-9b4b6ff85200-1.jpg 2x"
+                                src="600a9a04-c1b9-42ca-6785-9b4b6ff85200-1.jpg" style="color: transparent;">
+                              <p class="text-secondary text-lg">Arbitrum</p>
+                            </label><button type="button" role="switch" aria-checked="false" data-state="unchecked"
+                              value="on"
+                              class="peer inline-flex h-[1.375rem] w-[2rem] shrink-0 cursor-pointer items-center rounded-full border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-primary data-[state=unchecked]:border-gray-400 data-[state=checked]:bg-primary data-[state=unchecked]:bg-gray-400"
+                              id="chain-eip155:42161" fdprocessedid="tiq2nmg"><span data-state="unchecked"
+                                class="pointer-events-none block h-[1.125rem] w-[1.125rem] rounded-full bg-white shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-[0.6875rem] data-[state=unchecked]:translate-x-0"></span></button>
+                          </div>
+                          <div data-index="4"
+                            class="absolute left-0 top-0 flex w-full items-center justify-between gap-2 pl-6 pr-4"
+                            style="height: 40px; transform: translateY(160px);"><label
+                              class="text-gray-500 text-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex items-center gap-2"
+                              for="chain-eip155:8453"><img alt="Base" loading="lazy" width="24" height="24"
+                                decoding="async" data-nimg="1" class="rounded-full"
+                                srcset="7289c336-3981-4081-c5f4-efc26ac64a00-1.jpg 1x, 7289c336-3981-4081-c5f4-efc26ac64a00.jpg 2x"
+                                src="7289c336-3981-4081-c5f4-efc26ac64a00.jpg" style="color: transparent;">
+                              <p class="text-secondary text-lg">Base</p>
+                            </label><button type="button" role="switch" aria-checked="false" data-state="unchecked"
+                              value="on"
+                              class="peer inline-flex h-[1.375rem] w-[2rem] shrink-0 cursor-pointer items-center rounded-full border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-primary data-[state=unchecked]:border-gray-400 data-[state=checked]:bg-primary data-[state=unchecked]:bg-gray-400"
+                              id="chain-eip155:8453" fdprocessedid="mop9k5"><span data-state="unchecked"
+                                class="pointer-events-none block h-[1.125rem] w-[1.125rem] rounded-full bg-white shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-[0.6875rem] data-[state=unchecked]:translate-x-0"></span></button>
+                          </div>
+                          <div data-index="5"
+                            class="absolute left-0 top-0 flex w-full items-center justify-between gap-2 pl-6 pr-4"
+                            style="height: 40px; transform: translateY(200px);"><label
+                              class="text-gray-500 text-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex items-center gap-2"
+                              for="chain-eip155:137"><img alt="Polygon" loading="lazy" width="24" height="24"
+                                decoding="async" data-nimg="1" class="rounded-full"
+                                srcset="41d04d42-da3b-4453-8506-668cc0727900.jpg 1x, 41d04d42-da3b-4453-8506-668cc0727900-1.jpg 2x"
+                                src="41d04d42-da3b-4453-8506-668cc0727900-1.jpg" style="color: transparent;">
+                              <p class="text-secondary text-lg">Polygon</p>
+                            </label><button type="button" role="switch" aria-checked="false" data-state="unchecked"
+                              value="on"
+                              class="peer inline-flex h-[1.375rem] w-[2rem] shrink-0 cursor-pointer items-center rounded-full border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-primary data-[state=unchecked]:border-gray-400 data-[state=checked]:bg-primary data-[state=unchecked]:bg-gray-400"
+                              id="chain-eip155:137" fdprocessedid="8sztcg"><span data-state="unchecked"
+                                class="pointer-events-none block h-[1.125rem] w-[1.125rem] rounded-full bg-white shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-[0.6875rem] data-[state=unchecked]:translate-x-0"></span></button>
+                          </div>
+                          <div data-index="6"
+                            class="absolute left-0 top-0 flex w-full items-center justify-between gap-2 pl-6 pr-4"
+                            style="height: 40px; transform: translateY(240px);"><label
+                              class="text-gray-500 text-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex items-center gap-2"
+                              for="chain-eip155:56"><img alt="BNB" loading="lazy" width="24" height="24"
+                                decoding="async" data-nimg="1" class="rounded-full"
+                                srcset="93564157-2e8e-4ce7-81df-b264dbee9b00-1.jpg 1x, 93564157-2e8e-4ce7-81df-b264dbee9b00.jpg 2x"
+                                src="93564157-2e8e-4ce7-81df-b264dbee9b00.jpg" style="color: transparent;">
+                              <p class="text-secondary text-lg">BNB</p>
+                            </label><button type="button" role="switch" aria-checked="false" data-state="unchecked"
+                              value="on"
+                              class="peer inline-flex h-[1.375rem] w-[2rem] shrink-0 cursor-pointer items-center rounded-full border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-primary data-[state=unchecked]:border-gray-400 data-[state=checked]:bg-primary data-[state=unchecked]:bg-gray-400"
+                              id="chain-eip155:56" fdprocessedid="r65e8"><span data-state="unchecked"
+                                class="pointer-events-none block h-[1.125rem] w-[1.125rem] rounded-full bg-white shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-[0.6875rem] data-[state=unchecked]:translate-x-0"></span></button>
+                          </div>
+                          <div data-index="7"
+                            class="absolute left-0 top-0 flex w-full items-center justify-between gap-2 pl-6 pr-4"
+                            style="height: 40px; transform: translateY(280px);"><label
+                              class="text-gray-500 text-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex items-center gap-2"
+                              for="chain-eip155:43114"><img alt="Avalanche" loading="lazy" width="24" height="24"
+                                decoding="async" data-nimg="1" class="rounded-full"
+                                srcset="30c46e53-e989-45fb-4549-be3bd4eb3b00.jpg 1x, 30c46e53-e989-45fb-4549-be3bd4eb3b00-1.jpg 2x"
+                                src="30c46e53-e989-45fb-4549-be3bd4eb3b00-1.jpg" style="color: transparent;">
+                              <p class="text-secondary text-lg">Avalanche</p>
+                            </label><button type="button" role="switch" aria-checked="false" data-state="unchecked"
+                              value="on"
+                              class="peer inline-flex h-[1.375rem] w-[2rem] shrink-0 cursor-pointer items-center rounded-full border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-primary data-[state=unchecked]:border-gray-400 data-[state=checked]:bg-primary data-[state=unchecked]:bg-gray-400"
+                              id="chain-eip155:43114" fdprocessedid="h5vk38"><span data-state="unchecked"
+                                class="pointer-events-none block h-[1.125rem] w-[1.125rem] rounded-full bg-white shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-[0.6875rem] data-[state=unchecked]:translate-x-0"></span></button>
+                          </div>
+                          <div data-index="8"
+                            class="absolute left-0 top-0 flex w-full items-center justify-between gap-2 pl-6 pr-4"
+                            style="height: 40px; transform: translateY(320px);"><label
+                              class="text-gray-500 text-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex items-center gap-2"
+                              for="chain-cosmos:cosmoshub-4"><img alt="Cosmos" loading="lazy" width="24" height="24"
+                                decoding="async" data-nimg="1" class="rounded-full"
+                                srcset="2b1a7587-a534-49f1-ccbd-b58157ee3b00-1.jpg 1x, 2b1a7587-a534-49f1-ccbd-b58157ee3b00.jpg 2x"
+                                src="2b1a7587-a534-49f1-ccbd-b58157ee3b00.jpg" style="color: transparent;">
+                              <p class="text-secondary text-lg">Cosmos</p>
+                            </label><button type="button" role="switch" aria-checked="false" data-state="unchecked"
+                              value="on"
+                              class="peer inline-flex h-[1.375rem] w-[2rem] shrink-0 cursor-pointer items-center rounded-full border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-primary data-[state=unchecked]:border-gray-400 data-[state=checked]:bg-primary data-[state=unchecked]:bg-gray-400"
+                              id="chain-cosmos:cosmoshub-4" fdprocessedid="mvbl83"><span data-state="unchecked"
+                                class="pointer-events-none block h-[1.125rem] w-[1.125rem] rounded-full bg-white shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-[0.6875rem] data-[state=unchecked]:translate-x-0"></span></button>
+                          </div>
+                          <div data-index="9"
+                            class="absolute left-0 top-0 flex w-full items-center justify-between gap-2 pl-6 pr-4"
+                            style="height: 40px; transform: translateY(360px);"><label
+                              class="text-gray-500 text-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex items-center gap-2"
+                              for="chain-polkadot:91b171bb158e2d3848fa23a9f1c25182"><img alt="Default Chain Logo"
+                                loading="lazy" width="24" height="24" decoding="async" data-nimg="1"
+                                class="rounded-full" src="default-chain.svg" style="color: transparent;">
+                              <p class="text-secondary text-lg">Polkadot</p>
+                            </label><button type="button" role="switch" aria-checked="false" data-state="unchecked"
+                              value="on"
+                              class="peer inline-flex h-[1.375rem] w-[2rem] shrink-0 cursor-pointer items-center rounded-full border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-primary data-[state=unchecked]:border-gray-400 data-[state=checked]:bg-primary data-[state=unchecked]:bg-gray-400"
+                              id="chain-polkadot:91b171bb158e2d3848fa23a9f1c25182" fdprocessedid="7t0lpb"><span
+                                data-state="unchecked"
+                                class="pointer-events-none block h-[1.125rem] w-[1.125rem] rounded-full bg-white shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-[0.6875rem] data-[state=unchecked]:translate-x-0"></span></button>
+                          </div>
+                          <div data-index="10"
+                            class="absolute left-0 top-0 flex w-full items-center justify-between gap-2 pl-6 pr-4"
+                            style="height: 40px; transform: translateY(400px);"><label
+                              class="text-gray-500 text-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex items-center gap-2"
+                              for="chain-polkadot:b0a8d493285c2df73290dfb7e61f870f"><img alt="Default Chain Logo"
+                                loading="lazy" width="24" height="24" decoding="async" data-nimg="1"
+                                class="rounded-full" src="default-chain.svg" style="color: transparent;">
+                              <p class="text-secondary text-lg">Kusama</p>
+                            </label><button type="button" role="switch" aria-checked="false" data-state="unchecked"
+                              value="on"
+                              class="peer inline-flex h-[1.375rem] w-[2rem] shrink-0 cursor-pointer items-center rounded-full border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-primary data-[state=unchecked]:border-gray-400 data-[state=checked]:bg-primary data-[state=unchecked]:bg-gray-400"
+                              id="chain-polkadot:b0a8d493285c2df73290dfb7e61f870f" fdprocessedid="u1pyie"><span
+                                data-state="unchecked"
+                                class="pointer-events-none block h-[1.125rem] w-[1.125rem] rounded-full bg-white shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-[0.6875rem] data-[state=unchecked]:translate-x-0"></span></button>
+                          </div>
+                          <div data-index="11"
+                            class="absolute left-0 top-0 flex w-full items-center justify-between gap-2 pl-6 pr-4"
+                            style="height: 40px; transform: translateY(440px);"><label
+                              class="text-gray-500 text-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex items-center gap-2"
+                              for="chain-cosmos:irishub-1"><img alt="Default Chain Logo" loading="lazy" width="24"
+                                height="24" decoding="async" data-nimg="1" class="rounded-full" src="default-chain.svg"
+                                style="color: transparent;">
+                              <p class="text-secondary text-lg">Iris Net</p>
+                            </label><button type="button" role="switch" aria-checked="false" data-state="unchecked"
+                              value="on"
+                              class="peer inline-flex h-[1.375rem] w-[2rem] shrink-0 cursor-pointer items-center rounded-full border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-primary data-[state=unchecked]:border-gray-400 data-[state=checked]:bg-primary data-[state=unchecked]:bg-gray-400"
+                              id="chain-cosmos:irishub-1" fdprocessedid="gdu3zd"><span data-state="unchecked"
+                                class="pointer-events-none block h-[1.125rem] w-[1.125rem] rounded-full bg-white shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-[0.6875rem] data-[state=unchecked]:translate-x-0"></span></button>
+                          </div>
+                          <div data-index="12"
+                            class="absolute left-0 top-0 flex w-full items-center justify-between gap-2 pl-6 pr-4"
+                            style="height: 40px; transform: translateY(480px);"><label
+                              class="text-gray-500 text-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex items-center gap-2"
+                              for="chain-cosmos:kava-4"><img alt="Default Chain Logo" loading="lazy" width="24"
+                                height="24" decoding="async" data-nimg="1" class="rounded-full" src="default-chain.svg"
+                                style="color: transparent;">
+                              <p class="text-secondary text-lg">Kava</p>
+                            </label><button type="button" role="switch" aria-checked="false" data-state="unchecked"
+                              value="on"
+                              class="peer inline-flex h-[1.375rem] w-[2rem] shrink-0 cursor-pointer items-center rounded-full border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-primary data-[state=unchecked]:border-gray-400 data-[state=checked]:bg-primary data-[state=unchecked]:bg-gray-400"
+                              id="chain-cosmos:kava-4" fdprocessedid="kuclp"><span data-state="unchecked"
+                                class="pointer-events-none block h-[1.125rem] w-[1.125rem] rounded-full bg-white shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-[0.6875rem] data-[state=unchecked]:translate-x-0"></span></button>
+                          </div>
+                          <div data-index="13"
+                            class="absolute left-0 top-0 flex w-full items-center justify-between gap-2 pl-6 pr-4"
+                            style="height: 40px; transform: translateY(520px);"><label
+                              class="text-gray-500 text-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex items-center gap-2"
+                              for="chain-cosmos:columbus-4"><img alt="Default Chain Logo" loading="lazy" width="24"
+                                height="24" decoding="async" data-nimg="1" class="rounded-full" src="default-chain.svg"
+                                style="color: transparent;">
+                              <p class="text-secondary text-lg">Terra</p>
+                            </label><button type="button" role="switch" aria-checked="false" data-state="unchecked"
+                              value="on"
+                              class="peer inline-flex h-[1.375rem] w-[2rem] shrink-0 cursor-pointer items-center rounded-full border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-primary data-[state=unchecked]:border-gray-400 data-[state=checked]:bg-primary data-[state=unchecked]:bg-gray-400"
+                              id="chain-cosmos:columbus-4" fdprocessedid="pldoit"><span data-state="unchecked"
+                                class="pointer-events-none block h-[1.125rem] w-[1.125rem] rounded-full bg-white shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-[0.6875rem] data-[state=unchecked]:translate-x-0"></span></button>
+                          </div>
+                          <div data-index="14"
+                            class="absolute left-0 top-0 flex w-full items-center justify-between gap-2 pl-6 pr-4"
+                            style="height: 40px; transform: translateY(560px);"><label
+                              class="text-gray-500 text-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex items-center gap-2"
+                              for="chain-eip155:3"><img alt="Default Chain Logo" loading="lazy" width="24" height="24"
+                                decoding="async" data-nimg="1" class="rounded-full" src="default-chain.svg"
+                                style="color: transparent;">
+                              <p class="text-secondary text-lg">Ethereum Testnet Ropsten</p>
+                            </label><button type="button" role="switch" aria-checked="false" data-state="unchecked"
+                              value="on"
+                              class="peer inline-flex h-[1.375rem] w-[2rem] shrink-0 cursor-pointer items-center rounded-full border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-primary data-[state=unchecked]:border-gray-400 data-[state=checked]:bg-primary data-[state=unchecked]:bg-gray-400"
+                              id="chain-eip155:3" fdprocessedid="8x27xc"><span data-state="unchecked"
+                                class="pointer-events-none block h-[1.125rem] w-[1.125rem] rounded-full bg-white shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-[0.6875rem] data-[state=unchecked]:translate-x-0"></span></button>
+                          </div>
+                          <div data-index="15"
+                            class="absolute left-0 top-0 flex w-full items-center justify-between gap-2 pl-6 pr-4"
+                            style="height: 40px; transform: translateY(600px);"><label
+                              class="text-gray-500 text-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex items-center gap-2"
+                              for="chain-eip155:4"><img alt="Default Chain Logo" loading="lazy" width="24" height="24"
+                                decoding="async" data-nimg="1" class="rounded-full" src="default-chain.svg"
+                                style="color: transparent;">
+                              <p class="text-secondary text-lg">Ethereum Testnet Rinkeby</p>
+                            </label><button type="button" role="switch" aria-checked="false" data-state="unchecked"
+                              value="on"
+                              class="peer inline-flex h-[1.375rem] w-[2rem] shrink-0 cursor-pointer items-center rounded-full border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-primary data-[state=unchecked]:border-gray-400 data-[state=checked]:bg-primary data-[state=unchecked]:bg-gray-400"
+                              id="chain-eip155:4" fdprocessedid="py7gac"><span data-state="unchecked"
+                                class="pointer-events-none block h-[1.125rem] w-[1.125rem] rounded-full bg-white shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-[0.6875rem] data-[state=unchecked]:translate-x-0"></span></button>
+                          </div>
+                          <div data-index="16"
+                            class="absolute left-0 top-0 flex w-full items-center justify-between gap-2 pl-6 pr-4"
+                            style="height: 40px; transform: translateY(640px);"><label
+                              class="text-gray-500 text-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex items-center gap-2"
+                              for="chain-eip155:5"><img alt="Default Chain Logo" loading="lazy" width="24" height="24"
+                                decoding="async" data-nimg="1" class="rounded-full" src="default-chain.svg"
+                                style="color: transparent;">
+                              <p class="text-secondary text-lg">Ethereum Testnet Görli</p>
+                            </label><button type="button" role="switch" aria-checked="false" data-state="unchecked"
+                              value="on"
+                              class="peer inline-flex h-[1.375rem] w-[2rem] shrink-0 cursor-pointer items-center rounded-full border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-primary data-[state=unchecked]:border-gray-400 data-[state=checked]:bg-primary data-[state=unchecked]:bg-gray-400"
+                              id="chain-eip155:5" fdprocessedid="bdlqax"><span data-state="unchecked"
+                                class="pointer-events-none block h-[1.125rem] w-[1.125rem] rounded-full bg-white shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-[0.6875rem] data-[state=unchecked]:translate-x-0"></span></button>
+                          </div>
+                          <div data-index="17"
+                            class="absolute left-0 top-0 flex w-full items-center justify-between gap-2 pl-6 pr-4"
+                            style="height: 40px; transform: translateY(680px);"><label
+                              class="text-gray-500 text-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex items-center gap-2"
+                              for="chain-eip155:6"><img alt="Default Chain Logo" loading="lazy" width="24" height="24"
+                                decoding="async" data-nimg="1" class="rounded-full" src="default-chain.svg"
+                                style="color: transparent;">
+                              <p class="text-secondary text-lg">Ethereum Classic Testnet Kotti</p>
+                            </label><button type="button" role="switch" aria-checked="false" data-state="unchecked"
+                              value="on"
+                              class="peer inline-flex h-[1.375rem] w-[2rem] shrink-0 cursor-pointer items-center rounded-full border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-primary data-[state=unchecked]:border-gray-400 data-[state=checked]:bg-primary data-[state=unchecked]:bg-gray-400"
+                              id="chain-eip155:6" fdprocessedid="vw8whj"><span data-state="unchecked"
+                                class="pointer-events-none block h-[1.125rem] w-[1.125rem] rounded-full bg-white shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-[0.6875rem] data-[state=unchecked]:translate-x-0"></span></button>
+                          </div>
+                          <div data-index="18"
+                            class="absolute left-0 top-0 flex w-full items-center justify-between gap-2 pl-6 pr-4"
+                            style="height: 40px; transform: translateY(720px);"><label
+                              class="text-gray-500 text-sm peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex items-center gap-2"
+                              for="chain-eip155:7"><img alt="Default Chain Logo" loading="lazy" width="24" height="24"
+                                decoding="async" data-nimg="1" class="rounded-full" src="default-chain.svg"
+                                style="color: transparent;">
+                              <p class="text-secondary text-lg">ThaiChain</p>
+                            </label><button type="button" role="switch" aria-checked="false" data-state="unchecked"
+                              value="on"
+                              class="peer inline-flex h-[1.375rem] w-[2rem] shrink-0 cursor-pointer items-center rounded-full border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:border-primary data-[state=unchecked]:border-gray-400 data-[state=checked]:bg-primary data-[state=unchecked]:bg-gray-400"
+                              id="chain-eip155:7" fdprocessedid="8m5ytd"><span data-state="unchecked"
+                                class="pointer-events-none block h-[1.125rem] w-[1.125rem] rounded-full bg-white shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-[0.6875rem] data-[state=unchecked]:translate-x-0"></span></button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="order-first flex w-full items-center justify-between px-6 lg:order-last">
+              <p>455/455 wallets</p><button disabled=""
+                class="flex items-center justify-center gap-1 whitespace-nowrap outline-none transition-all font-mono hover:rounded-[1.5rem] focus-visible:rounded-[1.5rem] disabled:cursor-not-allowed disabled:opacity-80 text-secondary shadow-[inset_0_0_0_1px_theme('colors.gray.300')] rounded-xl px-4 py-2.5 text-md hover:disabled:rounded-xl">Reset
+                all</button>
+            </div>
+          </div>
+          <div class="w-full">
+            <div class="grid grid-cols-2 gap-0.5 sm:grid-cols-3 xl:grid-cols-4"><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r2:"
+                data-state="closed" fdprocessedid="0uzsa"><img alt="MetaMask" loading="lazy" width="142" height="142"
+                  decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="018b2d52-10e9-4158-1fde-a5d5bac5aa00.jpg 1x, 018b2d52-10e9-4158-1fde-a5d5bac5aa00-1.jpg 2x"
+                  src="018b2d52-10e9-4158-1fde-a5d5bac5aa00-1.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">MetaMask</p><img alt="WalletConnect Certified" loading="lazy"
+                      width="18" height="18" decoding="async" data-nimg="1" class="flex-shrink-0"
+                      src="wc-icon-certified.svg" style="color: transparent;">
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r5:"
+                data-state="closed" fdprocessedid="9qlhv"><img alt="Trust Wallet" loading="lazy" width="142"
+                  height="142" decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="7677b54f-3486-46e2-4e37-bf8747814f00.jpg 1x, 7677b54f-3486-46e2-4e37-bf8747814f00-1.jpg 2x"
+                  src="7677b54f-3486-46e2-4e37-bf8747814f00-1.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">Trust Wallet</p><img alt="WalletConnect Certified" loading="lazy"
+                      width="18" height="18" decoding="async" data-nimg="1" class="flex-shrink-0"
+                      src="wc-icon-certified.svg" style="color: transparent;">
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r8:"
+                data-state="closed" fdprocessedid="05rexk"><img alt="OKX Wallet" loading="lazy" width="142" height="142"
+                  decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="45f2f08e-fc0c-4d62-3e63-404e72170500.jpg 1x, 45f2f08e-fc0c-4d62-3e63-404e72170500-1.jpg 2x"
+                  src="45f2f08e-fc0c-4d62-3e63-404e72170500-1.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">OKX Wallet</p><img alt="WalletConnect Certified" loading="lazy"
+                      width="18" height="18" decoding="async" data-nimg="1" class="flex-shrink-0"
+                      src="wc-icon-certified.svg" style="color: transparent;">
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:rb:"
+                data-state="closed" fdprocessedid="v523l"><img alt="Bitget Wallet" loading="lazy" width="142"
+                  height="142" decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="68e8063a-ff69-4941-3b40-af09e2fcd700.jpg 1x, 68e8063a-ff69-4941-3b40-af09e2fcd700-1.jpg 2x"
+                  src="68e8063a-ff69-4941-3b40-af09e2fcd700-1.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">Bitget Wallet</p><img alt="WalletConnect Certified" loading="lazy"
+                      width="18" height="18" decoding="async" data-nimg="1" class="flex-shrink-0"
+                      src="wc-icon-certified.svg" style="color: transparent;">
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:re:"
+                data-state="closed" fdprocessedid="h1ma9"><img alt="Binance Web3 Wallet" loading="lazy" width="142"
+                  height="142" decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="ebac7b39-688c-41e3-7912-a4fefba74600-1.jpg 1x, ebac7b39-688c-41e3-7912-a4fefba74600.jpg 2x"
+                  src="ebac7b39-688c-41e3-7912-a4fefba74600.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">Binance Web3 Wallet</p><img alt="WalletConnect Certified"
+                      loading="lazy" width="18" height="18" decoding="async" data-nimg="1" class="flex-shrink-0"
+                      src="wc-icon-certified.svg" style="color: transparent;">
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:rh:"
+                data-state="closed" fdprocessedid="vgv56d"><img alt="Uniswap Wallet" loading="lazy" width="142"
+                  height="142" decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="bff9cf1f-df19-42ce-f62a-87f04df13c00-1.jpg 1x, bff9cf1f-df19-42ce-f62a-87f04df13c00.jpg 2x"
+                  src="bff9cf1f-df19-42ce-f62a-87f04df13c00.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">Uniswap Wallet</p><img alt="WalletConnect Certified" loading="lazy"
+                      width="18" height="18" decoding="async" data-nimg="1" class="flex-shrink-0"
+                      src="wc-icon-certified.svg" style="color: transparent;">
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:rk:"
+                data-state="closed" fdprocessedid="x2ichb"><img alt="SafePal" loading="lazy" width="142" height="142"
+                  decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="252753e7-b783-4e03-7f77-d39864530900.jpg 1x, 252753e7-b783-4e03-7f77-d39864530900-1.jpg 2x"
+                  src="252753e7-b783-4e03-7f77-d39864530900-1.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">SafePal</p><img alt="WalletConnect Certified" loading="lazy"
+                      width="18" height="18" decoding="async" data-nimg="1" class="flex-shrink-0"
+                      src="wc-icon-certified.svg" style="color: transparent;">
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:rn:"
+                data-state="closed" fdprocessedid="0x0n28"><img alt="Rainbow" loading="lazy" width="142" height="142"
+                  decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="7a33d7f1-3d12-4b5c-f3ee-5cd83cb1b500-1.jpg 1x, 7a33d7f1-3d12-4b5c-f3ee-5cd83cb1b500.jpg 2x"
+                  src="7a33d7f1-3d12-4b5c-f3ee-5cd83cb1b500.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">Rainbow</p><img alt="WalletConnect Certified" loading="lazy"
+                      width="18" height="18" decoding="async" data-nimg="1" class="flex-shrink-0"
+                      src="wc-icon-certified.svg" style="color: transparent;">
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:rq:"
+                data-state="closed" fdprocessedid="60tqjr"><img alt="Bybit Wallet" loading="lazy" width="142"
+                  height="142" decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="b9e64f74-0176-44fd-c603-673a45ed5b00-1.jpg 1x, b9e64f74-0176-44fd-c603-673a45ed5b00.jpg 2x"
+                  src="b9e64f74-0176-44fd-c603-673a45ed5b00.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">Bybit Wallet</p><img alt="WalletConnect Certified" loading="lazy"
+                      width="18" height="18" decoding="async" data-nimg="1" class="flex-shrink-0"
+                      src="wc-icon-certified.svg" style="color: transparent;">
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:rt:"
+                data-state="closed" fdprocessedid="i3rek"><img alt="TokenPocket" loading="lazy" width="142" height="142"
+                  decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="f3119826-4ef5-4d31-4789-d4ae5c18e400-1.jpg 1x, f3119826-4ef5-4d31-4789-d4ae5c18e400.jpg 2x"
+                  src="f3119826-4ef5-4d31-4789-d4ae5c18e400.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">TokenPocket</p><img alt="WalletConnect Certified" loading="lazy"
+                      width="18" height="18" decoding="async" data-nimg="1" class="flex-shrink-0"
+                      src="wc-icon-certified.svg" style="color: transparent;">
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r10:"
+                data-state="closed" fdprocessedid="dzfa5p"><img alt="Ledger Live" loading="lazy" width="142"
+                  height="142" decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="a7f416de-aa03-4c5e-3280-ab49269aef00-1.jpg 1x, a7f416de-aa03-4c5e-3280-ab49269aef00.jpg 2x"
+                  src="a7f416de-aa03-4c5e-3280-ab49269aef00.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">Ledger Live</p><img alt="WalletConnect Certified" loading="lazy"
+                      width="18" height="18" decoding="async" data-nimg="1" class="flex-shrink-0"
+                      src="wc-icon-certified.svg" style="color: transparent;">
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r13:"
+                data-state="closed" fdprocessedid="xetvg"><img alt="Timeless X" loading="lazy" width="142" height="142"
+                  decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="92f1ead4-0bc4-4932-10d3-761c509b4d00.jpg 1x, 92f1ead4-0bc4-4932-10d3-761c509b4d00-1.jpg 2x"
+                  src="92f1ead4-0bc4-4932-10d3-761c509b4d00-1.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">Timeless X</p><img alt="WalletConnect Certified" loading="lazy"
+                      width="18" height="18" decoding="async" data-nimg="1" class="flex-shrink-0"
+                      src="wc-icon-certified.svg" style="color: transparent;">
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r16:"
+                data-state="closed" fdprocessedid="0te1ga"><img alt="Safe" loading="lazy" width="142" height="142"
+                  decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="3913df81-63c2-4413-d60b-8ff83cbed500.jpg 1x, 3913df81-63c2-4413-d60b-8ff83cbed500-1.jpg 2x"
+                  src="3913df81-63c2-4413-d60b-8ff83cbed500-1.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">Safe</p><img alt="WalletConnect Certified" loading="lazy" width="18"
+                      height="18" decoding="async" data-nimg="1" class="flex-shrink-0" src="wc-icon-certified.svg"
+                      style="color: transparent;">
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r19:"
+                data-state="closed" fdprocessedid="w3kh7"><img alt="Zerion" loading="lazy" width="142" height="142"
+                  decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="73f6f52f-7862-49e7-bb85-ba93ab72cc00.jpg 1x, 73f6f52f-7862-49e7-bb85-ba93ab72cc00-1.jpg 2x"
+                  src="73f6f52f-7862-49e7-bb85-ba93ab72cc00-1.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">Zerion</p><img alt="WalletConnect Certified" loading="lazy"
+                      width="18" height="18" decoding="async" data-nimg="1" class="flex-shrink-0"
+                      src="wc-icon-certified.svg" style="color: transparent;">
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r1c:"
+                data-state="closed" fdprocessedid="z4ulop"><img alt="1inch Wallet" loading="lazy" width="142"
+                  height="142" decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="52b1da3c-9e72-40ae-5dac-6142addd9c00-1.jpg 1x, 52b1da3c-9e72-40ae-5dac-6142addd9c00.jpg 2x"
+                  src="52b1da3c-9e72-40ae-5dac-6142addd9c00.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">1inch Wallet</p><img alt="WalletConnect Certified" loading="lazy"
+                      width="18" height="18" decoding="async" data-nimg="1" class="flex-shrink-0"
+                      src="wc-icon-certified.svg" style="color: transparent;">
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r1f:"
+                data-state="closed" fdprocessedid="y4o72q"><img alt="Crypto.com | DeFi Wallet" loading="lazy"
+                  width="142" height="142" decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="88388eb4-4471-4e72-c4b4-852d496fea00.jpg 1x, 88388eb4-4471-4e72-c4b4-852d496fea00-1.jpg 2x"
+                  src="88388eb4-4471-4e72-c4b4-852d496fea00-1.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">Crypto.com | DeFi Wallet</p><img alt="WalletConnect Certified"
+                      loading="lazy" width="18" height="18" decoding="async" data-nimg="1" class="flex-shrink-0"
+                      src="wc-icon-certified.svg" style="color: transparent;">
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r1i:"
+                data-state="closed" fdprocessedid="85kmv"><img alt="imToken" loading="lazy" width="142" height="142"
+                  decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="c84b4d9d-9525-4bb5-b373-934b46eafc00-1.jpg 1x, c84b4d9d-9525-4bb5-b373-934b46eafc00.jpg 2x"
+                  src="c84b4d9d-9525-4bb5-b373-934b46eafc00.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">imToken</p><img alt="WalletConnect Certified" loading="lazy"
+                      width="18" height="18" decoding="async" data-nimg="1" class="flex-shrink-0"
+                      src="wc-icon-certified.svg" style="color: transparent;">
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r1l:"
+                data-state="closed" fdprocessedid="q9llh"><img alt="Kraken Wallet " loading="lazy" width="142"
+                  height="142" decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="8909e826-63e4-42b3-60b2-8a6a54060900.jpg 1x, 8909e826-63e4-42b3-60b2-8a6a54060900-1.jpg 2x"
+                  src="8909e826-63e4-42b3-60b2-8a6a54060900-1.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">Kraken Wallet </p><img alt="WalletConnect Certified" loading="lazy"
+                      width="18" height="18" decoding="async" data-nimg="1" class="flex-shrink-0"
+                      src="wc-icon-certified.svg" style="color: transparent;">
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r1o:"
+                data-state="closed" fdprocessedid="njgefh"><img alt="Ronin Wallet" loading="lazy" width="142"
+                  height="142" decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="bd78de7e-36da-4552-ebdd-2e420ba05900.jpg 1x, bd78de7e-36da-4552-ebdd-2e420ba05900-1.jpg 2x"
+                  src="bd78de7e-36da-4552-ebdd-2e420ba05900-1.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">Ronin Wallet</p><img alt="WalletConnect Certified" loading="lazy"
+                      width="18" height="18" decoding="async" data-nimg="1" class="flex-shrink-0"
+                      src="wc-icon-certified.svg" style="color: transparent;">
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r1r:"
+                data-state="closed" fdprocessedid="fx7gc"><img alt="Robinhood Wallet" loading="lazy" width="142"
+                  height="142" decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="dfe0e3e3-5746-4e2b-12ad-704608531500.jpg 1x, dfe0e3e3-5746-4e2b-12ad-704608531500-1.jpg 2x"
+                  src="dfe0e3e3-5746-4e2b-12ad-704608531500-1.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">Robinhood Wallet</p>
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r1u:"
+                data-state="closed" fdprocessedid="9ms1uj"><img alt="Exodus" loading="lazy" width="142" height="142"
+                  decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="4c16cad4-cac9-4643-6726-c696efaf5200-1.jpg 1x, 4c16cad4-cac9-4643-6726-c696efaf5200.jpg 2x"
+                  src="4c16cad4-cac9-4643-6726-c696efaf5200.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">Exodus</p>
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r21:"
+                data-state="closed" fdprocessedid="vmqdyg"><img alt="Argent" loading="lazy" width="142" height="142"
+                  decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="215158d2-614b-49c9-410f-77aa661c3900.jpg 1x, 215158d2-614b-49c9-410f-77aa661c3900-1.jpg 2x"
+                  src="215158d2-614b-49c9-410f-77aa661c3900-1.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">Argent</p>
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r24:"
+                data-state="closed" fdprocessedid="epgcr"><img alt="Blockchain.com" loading="lazy" width="142"
+                  height="142" decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="6f913b80-86c0-46f9-61ca-cc90a1805900-1.jpg 1x, 6f913b80-86c0-46f9-61ca-cc90a1805900.jpg 2x"
+                  src="6f913b80-86c0-46f9-61ca-cc90a1805900.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">Blockchain.com</p>
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r27:"
+                data-state="closed" fdprocessedid="8wy0n"><img alt="Magic Eden" loading="lazy" width="142" height="142"
+                  decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="62040f22-2ffd-4942-92fc-71ce68c64300.jpg 1x, 62040f22-2ffd-4942-92fc-71ce68c64300-1.jpg 2x"
+                  src="62040f22-2ffd-4942-92fc-71ce68c64300-1.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">Magic Eden</p>
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r2a:"
+                data-state="closed" fdprocessedid="vfgghk"><img alt="Coinbase Wallet" loading="lazy" width="142"
+                  height="142" decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="a5ebc364-8f91-4200-fcc6-be81310a0000-1.jpg 1x, a5ebc364-8f91-4200-fcc6-be81310a0000.jpg 2x"
+                  src="a5ebc364-8f91-4200-fcc6-be81310a0000.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">Coinbase Wallet</p>
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r2d:"
+                data-state="closed" fdprocessedid="8wbpz"><img alt="Backpack" loading="lazy" width="142" height="142"
+                  decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="71ca9daf-a31e-4d2a-fd01-f5dc2dc66900-1.jpg 1x, 71ca9daf-a31e-4d2a-fd01-f5dc2dc66900.jpg 2x"
+                  src="71ca9daf-a31e-4d2a-fd01-f5dc2dc66900.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">Backpack</p>
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r2g:"
+                data-state="closed" fdprocessedid="dnijzf"><img alt="Zengo Wallet" loading="lazy" width="142"
+                  height="142" decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="6133c399-ae32-4eba-0c5a-0fb84492bf00-1.jpg 1x, 6133c399-ae32-4eba-0c5a-0fb84492bf00.jpg 2x"
+                  src="6133c399-ae32-4eba-0c5a-0fb84492bf00.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">Zengo Wallet</p>
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r2j:"
+                data-state="closed" fdprocessedid="56rtvq"><img alt="MEW wallet" loading="lazy" width="142" height="142"
+                  decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="e2024511-2c9b-46d7-3111-52df3d241700-1.jpg 1x, e2024511-2c9b-46d7-3111-52df3d241700.jpg 2x"
+                  src="e2024511-2c9b-46d7-3111-52df3d241700.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">MEW wallet</p>
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r2m:"
+                data-state="closed" fdprocessedid="31651"><img alt="Phantom" loading="lazy" width="142" height="142"
+                  decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="c38443bb-b3c1-4697-e569-408de3fcc100-1.jpg 1x, c38443bb-b3c1-4697-e569-408de3fcc100.jpg 2x"
+                  src="c38443bb-b3c1-4697-e569-408de3fcc100.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">Phantom</p>
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r2p:"
+                data-state="closed" fdprocessedid="2bw6x"><img alt="Fireblocks" loading="lazy" width="142" height="142"
+                  decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="7e1514ba-932d-415d-1bdb-bccb6c2cbc00-1.jpg 1x, 7e1514ba-932d-415d-1bdb-bccb6c2cbc00.jpg 2x"
+                  src="7e1514ba-932d-415d-1bdb-bccb6c2cbc00.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">Fireblocks</p>
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r2s:"
+                data-state="closed" fdprocessedid="8jumne"><img alt="Solflare" loading="lazy" width="142" height="142"
+                  decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="e813ff48-99a4-43b6-6049-b4e887d70a00-1.jpg 1x, e813ff48-99a4-43b6-6049-b4e887d70a00.jpg 2x"
+                  src="e813ff48-99a4-43b6-6049-b4e887d70a00.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">Solflare</p>
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r2v:"
+                data-state="closed" fdprocessedid="cz1sqe"><img alt="MathWallet" loading="lazy" width="142" height="142"
+                  decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="26a8f588-3231-4411-60ce-5bb6b805a700-1.jpg 1x, 26a8f588-3231-4411-60ce-5bb6b805a700.jpg 2x"
+                  src="26a8f588-3231-4411-60ce-5bb6b805a700.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">MathWallet</p>
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r32:"
+                data-state="closed" fdprocessedid="ck7a2k"><img alt="AlphaWallet" loading="lazy" width="142"
+                  height="142" decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="5b1cddfb-056e-4e78-029a-54de5d70c500-1.jpg 1x, 5b1cddfb-056e-4e78-029a-54de5d70c500.jpg 2x"
+                  src="5b1cddfb-056e-4e78-029a-54de5d70c500.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">AlphaWallet</p>
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r35:"
+                data-state="closed" fdprocessedid="zd90r9"><img alt="Unstoppable Domains" loading="lazy" width="142"
+                  height="142" decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="4725dda0-4471-4d0f-7adf-6bbe8b929c00-1.jpg 1x, 4725dda0-4471-4d0f-7adf-6bbe8b929c00.jpg 2x"
+                  src="4725dda0-4471-4d0f-7adf-6bbe8b929c00.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">Unstoppable Domains</p>
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r38:"
+                data-state="closed" fdprocessedid="c0xe"><img alt="KEYRING PRO" loading="lazy" width="142" height="142"
+                  decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="dda0f0fb-34e8-4a57-dcea-b008e7d1ff00-1.jpg 1x, dda0f0fb-34e8-4a57-dcea-b008e7d1ff00.jpg 2x"
+                  src="dda0f0fb-34e8-4a57-dcea-b008e7d1ff00.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">KEYRING PRO</p>
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r3b:"
+                data-state="closed" fdprocessedid="sutxsa"><img alt="Frontier" loading="lazy" width="142" height="142"
+                  decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="a78c4d48-32c1-4a9d-52f2-ec7ee08ce200-1.jpg 1x, a78c4d48-32c1-4a9d-52f2-ec7ee08ce200.jpg 2x"
+                  src="a78c4d48-32c1-4a9d-52f2-ec7ee08ce200.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">Frontier</p>
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r3e:"
+                data-state="closed" fdprocessedid="qu35a7"><img alt="Omni" loading="lazy" width="142" height="142"
+                  decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="2cd67b4c-282b-4809-e7c0-a88cd5116f00-1.jpg 1x, 2cd67b4c-282b-4809-e7c0-a88cd5116f00.jpg 2x"
+                  src="2cd67b4c-282b-4809-e7c0-a88cd5116f00.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">Omni</p>
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r3h:"
+                data-state="closed" fdprocessedid="1o4qrg"><img alt="LOBSTR Wallet" loading="lazy" width="142"
+                  height="142" decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="0dafcaab-0852-47f7-85dd-436b86491d00-1.jpg 1x, 0dafcaab-0852-47f7-85dd-436b86491d00.jpg 2x"
+                  src="0dafcaab-0852-47f7-85dd-436b86491d00.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">LOBSTR Wallet</p>
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r3k:"
+                data-state="closed" fdprocessedid="ykuf7n"><img alt="Obvious" loading="lazy" width="142" height="142"
+                  decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="fe1b9394-55af-4828-a70d-5c5b7de6b200-1.jpg 1x, fe1b9394-55af-4828-a70d-5c5b7de6b200.jpg 2x"
+                  src="fe1b9394-55af-4828-a70d-5c5b7de6b200.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">Obvious</p>
+                  </div>
+                </div>
+              </button><button
+                class="flex aspect-square flex-1 flex-col items-center justify-center gap-4 rounded-4xl bg-gray-100 text-center transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary lg:hover:rounded-5xl"
+                type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:r3n:"
+                data-state="closed" fdprocessedid="kw5nmv"><img alt="Ambire Wallet" loading="lazy" width="142"
+                  height="142" decoding="async" data-nimg="1" class="rounded-3xl w-[46.5%]"
+                  srcset="c39b3a16-1a38-4588-f089-cb7aeb584700-1.jpg 1x, c39b3a16-1a38-4588-f089-cb7aeb584700.jpg 2x"
+                  src="c39b3a16-1a38-4588-f089-cb7aeb584700.jpg" style="color: transparent;">
+                <div class="w-full">
+                  <div class="mx-4 flex items-center justify-center gap-1">
+                    <p class="truncate no-capsize">Ambire Wallet</p>
+                  </div>
+                </div>
+              </button>
+              <div class="col-span-full mt-6 flex justify-center"><button
+                  class="flex items-center justify-center gap-1 whitespace-nowrap rounded-2xl px-5 py-4 outline-none transition-all font-mono hover:rounded-[1.5rem] focus-visible:rounded-[1.5rem] disabled:cursor-not-allowed disabled:opacity-80 disabled:hover:rounded-2xl bg-primary/10 text-primary"
+                  fdprocessedid="ndqin">View More</button></div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer class="w-full space-y-2">
+        <div class="flex w-full flex-col gap-11 rounded-4xl px-8 py-11 bg-primary pb-18 lg:h-[29.375rem]">
+          <div class="space-y-2.5">
+            <h2 class="text-h5 lg:text-h4 text-secondary">Explore the onchain UX ecosystem</h2>
+            <h3 class="max-w-[33.75rem] text-h5 lg:text-h4 text-white">Learn more about the WalletConnect Network and
+              how to become part of its thriving community.</h3>
+          </div><a
+            class="flex items-center justify-center gap-1 whitespace-nowrap rounded-2xl px-5 py-4 outline-none transition-all font-mono hover:rounded-[1.5rem] focus-visible:rounded-[1.5rem] disabled:cursor-not-allowed disabled:opacity-80 disabled:hover:rounded-2xl bg-secondary text-white w-fit text-lg-mono capsize"
+            target="_blank" href="https://docs.walletconnect.network/">Learn more</a>
+        </div>
+        <div class="flex w-full flex-col gap-11 rounded-4xl bg-secondary px-8 py-11 justify-between">
+          <div class="flex flex-col justify-between gap-11 md:flex-row">
+            <div class="flex w-fit max-w-[20.2rem] flex-col gap-6">
+              <div class="space-y-2.5">
+                <p class="text-white text-h6">Keep in touch</p>
+                <p class="text-white/30 text-h6">Be first to get news and updates on the WalletConnect Network.</p>
+              </div>
+              <form class="w-full space-y-4">
+                <div class="w-full space-y-2">
+                  <div class="relative"><input id=":Rpd9cq:-form-item"
+                      class="flex w-full border transition placeholder:text-gray-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-600 disabled:cursor-not-allowed disabled:opacity-50 border-gray-600 bg-secondary text-white h-11 rounded-xl-2 px-4 text-md-mono pr-10"
+                      placeholder="Your Email" autocomplete="email" aria-describedby=":Rpd9cq:-form-item-description"
+                      aria-invalid="false" name="email" value="" fdprocessedid="wbllo"></div>
+                </div><button
+                  class="flex items-center justify-center gap-1 whitespace-nowrap rounded-2xl px-5 py-4 outline-none transition-all font-mono hover:rounded-[1.5rem] focus-visible:rounded-[1.5rem] disabled:cursor-not-allowed disabled:opacity-80 disabled:hover:rounded-2xl bg-white text-secondary w-full"
+                  type="submit" fdprocessedid="cspro">Subscribe</button>
+              </form>
+              <p class="max-w-52 text-gray-600 text-sm">Unsubscribe at any time. Our Privacy Policy is available
+                <!-- --> <a class="inline-block hover:text-white text-gray-600 underline underline-offset-4 text-sm"
+                  target="_blank" href="https://walletconnect.network/privacy">here</a>.
+              </p>
+            </div>
+            <div
+              class="grid max-w-[18.75rem] grid-cols-2 gap-x-20 gap-y-11 sm:max-w-none sm:grid-cols-3 md:gap-x-10 lg:mr-20 lg:gap-x-20">
+              <div class="space-y-6">
+                <p class="text-gray-500 text-sm">Company</p>
+                <div class="flex flex-col gap-3 text-nowrap"><a
+                    class="inline-block text-md text-white hover:text-gray-500" target="_blank"
+                    href="https://walletconnect.network/foundation">About</a><a
+                    class="inline-block text-md text-white hover:text-gray-500" target="_blank"
+                    href="https://walletconnect.network/blog">Blog</a><a
+                    class="inline-block text-md text-white hover:text-gray-500" target="_blank"
+                    href="https://apply.workable.com/walletconnect-foundation/">Jobs</a></div>
+              </div>
+              <div class="space-y-6">
+                <p class="text-gray-500 text-sm">Network</p>
+                <div class="flex flex-col gap-3 text-nowrap"><a
+                    class="inline-block text-md text-white hover:text-gray-500" target="_blank"
+                    href="https://docs.walletconnect.network/">Docs</a><a
+                    class="inline-block text-md text-white hover:text-gray-500" target="_blank"
+                    href="https://whitepaper.walletconnect.network/">White Paper</a><a
+                    class="inline-block text-md text-white hover:text-gray-500" target="_blank"
+                    href="https://walletconnect.network/foundation">Foundation</a></div>
+              </div>
+              <div class="space-y-6">
+                <p class="text-gray-500 text-sm">Connect</p>
+                <div class="flex flex-col gap-3 text-nowrap"><a
+                    class="inline-block text-md text-white hover:text-gray-500" target="_blank"
+                    href="https://x.com/WalletConnect">X (Twitter)</a><a
+                    class="inline-block text-md text-white hover:text-gray-500" target="_blank"
+                    href="https://www.linkedin.com/company/walletconnect-network">LinkedIn</a><a
+                    class="inline-block text-md text-white hover:text-gray-500" target="_blank"
+                    href="https://www.youtube.com/@walletconnectofficial">YouTube</a><a
+                    class="inline-block text-md text-white hover:text-gray-500" target="_blank"
+                    href="https://t.me/walletconnect">Telegram</a><a
+                    class="inline-block text-md text-white hover:text-gray-500" target="_blank"
+                    href="https://warpcast.com/~/channel/walletconnect">Farcaster</a></div>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col justify-between gap-11 lg:flex-row lg:items-center"><img alt="WalletConnect Icon"
+              loading="lazy" width="43" height="27" decoding="async" data-nimg="1" style="color:transparent"
+              src="wc-icon.svg">
+            <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-36 lg:pr-32">
+              <p class="text-gray-200 text-md-mono">© 2024 WalletConnect Foundation.</p>
+              <div class="flex flex-col gap-2 md:flex-row md:gap-4"><a
+                  class="inline-block text-md text-gray-500 hover:text-white" target="_blank"
+                  href="https://walletconnect.network/privacy">Privacy Policy</a><a
+                  class="inline-block text-md text-gray-500 hover:text-white" target="_blank"
+                  href="https://walletconnect.network/terms">Terms and Conditions</a></div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <section aria-label="Notifications alt+T" tabindex="-1" aria-live="polite" aria-relevant="additions text"
+    aria-atomic="false"></section><span id="PING_IFRAME_FORM_DETECTION" style="display: none;"></span>
+  <next-route-announcer style="position: absolute;"
+    data-scrapbook-shadowdom="<div aria-live=&quot;assertive&quot; id=&quot;__next-route-announcer__&quot; role=&quot;alert&quot; style=&quot;position: absolute; border: 0px; height: 1px; margin: -1px; padding: 0px; width: 1px; clip: rect(0px, 0px, 0px, 0px); overflow: hidden; white-space: nowrap; overflow-wrap: normal;&quot;></div>">
+  </next-route-announcer>
+  <script
+    data-scrapbook-elem="basic-loader">(function () { var k1 = "data-scrapbook-shadowdom", k2 = "data-scrapbook-canvas", k3 = "data-scrapbook-input-indeterminate", k4 = "data-scrapbook-input-checked", k5 = "data-scrapbook-option-selected", k6 = "data-scrapbook-input-value", k7 = "data-scrapbook-textarea-value", k8 = "data-scrapbook-adoptedstylesheets", k9 = /^data-scrapbook-adoptedstylesheet-(\d+)$/, k10 = "data-scrapbook-shadowdom-mode", k11 = "data-scrapbook-shadowdom-clonable", k12 = "data-scrapbook-shadowdom-delegates-focus", k13 = "data-scrapbook-shadowdom-serializable", k14 = "data-scrapbook-shadowdom-slot-assignment", k15 = "data-scrapbook-slot-assigned", k16 = "data-scrapbook-slot-index", k17 = /^scrapbook-slot-index=(\d+)$/; k18 = '/scrapbook-slot-index'; d = document, r = d.documentElement, $s = !!r.attachShadow, $as = !!d.adoptedStyleSheets, $c = !!window.HTMLCanvasElement, $sa = !!d.createElement('slot').assign, sle = [], sls = [], slt = function (r) { if ($sa) { var E = r.childNodes, i, e, s, m; for (i = 0; i < E.length; i++) { e = E[i]; if (e.nodeType === 8) { s = e.nodeValue; if (m = s.match(k17)) { s = e.nextSibling; if (s.nodeType === 3) { sls[m[1]] = s; } r.removeChild(e); i--; } else if (s === k18) { r.removeChild(e); i--; } } } } }, sl = function () { var i = sle.length, j, d, e; while (i--) { d = sle[i]; e = d.elem; d = d.value.split(','); j = d.length; while (j--) { d[j] = sls[parseInt(d[j], 10)]; } try { e.assign.apply(e, d); } catch (ex) { console.error(ex); } } }, asl = (function (r) { var l = [], E, i, e, m, c, j; if ($as) { E = r.attributes; i = E.length; while (i--) { e = E[i]; if (!(m = e.nodeName.match(k9))) { continue; } c = l[m[1]] = new CSSStyleSheet(); r.removeAttribute(m[0]); m = e.nodeValue.split('\n\n'); j = m.length; while (j--) { try { m[j] && c.insertRule(m[j]); } catch (ex) { console.error(ex); } } } } return l; })(r), as = function (d, e) { var l, i, I; if ($as && (l = e.getAttribute(k8)) !== null) { l = l.split(','); for (i = 0, I = l.length; i < I; i++) { d.adoptedStyleSheets.push(asl[l[i]]); } e.removeAttribute(k8); } }, fn = function (r) { var E = r.querySelectorAll ? r.querySelectorAll("*") : r.getElementsByTagName("*"), i = E.length, e, d, s, m; while (i--) { e = E[i]; s = e.shadowRoot; if ($s && (d = e.getAttribute(k1))) { if (!s) { try { s = e.attachShadow({ mode: (m = e.getAttribute(k10)) !== null ? m : 'open', clonable: e.hasAttribute(k11), delegatesFocus: e.hasAttribute(k12), serializable: e.hasAttribute(k13), slotAssignment: (m = e.getAttribute(k14)) !== null ? m : void (0), }); s.innerHTML = d; } catch (ex) { console.error(ex); } } e.removeAttribute(k1); e.removeAttribute(k10); e.removeAttribute(k11); e.removeAttribute(k12); e.removeAttribute(k13); e.removeAttribute(k14); } if ($c && (d = e.getAttribute(k2)) !== null) { (function () { var c = e, g = new Image(); g.onload = function () { c.getContext('2d').drawImage(g, 0, 0); }; g.src = d; })(); e.removeAttribute(k2); } if ((d = e.getAttribute(k3)) !== null) { e.indeterminate = true; e.removeAttribute(k3); } if ((d = e.getAttribute(k4)) !== null) { e.checked = d === 'true'; e.removeAttribute(k4); } if ((d = e.getAttribute(k5)) !== null) { e.selected = d === 'true'; e.removeAttribute(k5); } if ((d = e.getAttribute(k6)) !== null) { e.value = d; e.removeAttribute(k6); } if ((d = e.getAttribute(k7)) !== null) { e.value = d; e.removeAttribute(k7); } if ($sa && (d = e.getAttribute(k15)) !== null) { sle.push({ elem: e, value: d }); e.removeAttribute(k15); } if ($sa && (d = e.getAttribute(k16)) !== null) { sls[d] = e; e.removeAttribute(k16); } if (s) { slt(e); as(s, e); fn(s); } } }; as(d, r); fn(d); sl(); })()</script>
+</body>
+
+</html>
